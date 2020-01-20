@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="tekstNormalni">30sp</dimen>
+    <dimen name="tekstSrednji">50sp</dimen>
+    <dimen name="tekstVeliki">70sp</dimen>
+    <dimen name="velikost">0dp</dimen>
+    <dimen name="marginEight">8dp</dimen>
+    <dimen name="marginBig">32dp</dimen>
+    <dimen name="marginMed">16dp</dimen>
+    <dimen name="marginSpec">109dp</dimen>
+    <dimen name="marginSpecSmall">18dp</dimen>
+    <dimen name="one">1dp</dimen>
+    <dimen name="height">130dp</dimen>
+    <dimen name="pad">12dp</dimen>
+    <dimen name="absolute">160dp</dimen>
+    <dimen name="marginVeryBig">180dp</dimen>
+    <dimen name="marginBott">4dp</dimen>
+    <dimen name="marginTop">172dp</dimen>
+    <dimen name="marginEnd">24dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+</resources>
