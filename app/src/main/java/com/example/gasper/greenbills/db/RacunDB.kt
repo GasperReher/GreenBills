@@ -5,11 +5,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.gasper.greenbils.db.Izdelek
 
 
-@Database(entities = arrayOf(Racun::class), version = 1)
+@Database(entities = arrayOf(Racun::class,Izdelek::class), version = 4)
 abstract class RacunDB : RoomDatabase() {
     abstract fun racunDao(): RacunDAO
+    abstract fun izdelekDao(): IzdelekDAO
 
     companion object {
         private var INSTANCE: RacunDB? = null

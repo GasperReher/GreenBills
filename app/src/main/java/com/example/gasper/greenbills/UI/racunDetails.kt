@@ -4,15 +4,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gasper.greenbills.R
+import com.example.gasper.greenbills.db.*
 import com.example.gasper.greenbils.db.Izdelek
 import kotlinx.android.synthetic.main.activity_izdelek_row.*
 import kotlinx.android.synthetic.main.activity_racun_details.*
 import kotlinx.android.synthetic.main.fragment_list_izdelek.*
-
-
-
-
-
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 
 class racunDetails : AppCompatActivity() {
@@ -22,15 +21,14 @@ class racunDetails : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_racun_details)
-        //var id =   intent.getStringExtra("id")
+        var id = Integer.parseInt(  intent.getStringExtra("id"))
         trgovina.text=intent.getStringExtra("trgovina")
         datum.text= intent.getStringExtra("datum")
-        var i1= Izdelek(0,"IZDELEK1","5","2",0)
-        var i2= Izdelek(1,"IZDELEK2","8","20",0)
-        var i3= Izdelek(2,"IZDELEK3","5","15",0)
-        listIzdelki.add(i1)
-        listIzdelki.add(i2)
-        listIzdelki.add(i3)
+        val izdelekDao = RacunDB.getInstance(application)?.izdelekDao()
+
+        if (izdelekDao != null) {
+            getData(izdelekDao,id)
+        }
 
         var st = 0
             for(iz in listIzdelki){
@@ -42,5 +40,9 @@ class racunDetails : AppCompatActivity() {
 
     }
 
-
+    fun getData(izdelekDao: IzdelekDAO,id:Int) = runBlocking {
+        launch(Dispatchers.IO) {
+            listIzdelki = izdelekDao?.getSpecial(id) as ArrayList<Izdelek>
+        }
+    }
 }
